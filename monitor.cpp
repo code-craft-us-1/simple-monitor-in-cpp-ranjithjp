@@ -42,7 +42,6 @@ bool IsOxygenSaturationCritical(float spo2) {
 }
 
 bool isPatientCritical(float temperature, float pulseRate, float spo2) {
-    
     std::bitset<Vitals::count> vitalsStatus{};
 
     vitalsStatus[Temperature] = IsTemperatureInFarenheitCritical(temperature);
