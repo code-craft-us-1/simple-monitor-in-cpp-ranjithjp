@@ -6,8 +6,8 @@ TEST(Monitor, IndividualVital) {
     ASSERT_TRUE(IsTemperatureInFarenheitCritical(93.0F));  // Less than Min Temperature
     ASSERT_TRUE(IsTemperatureInFarenheitCritical(105.0F));  // Greater than Max Temperature
     ASSERT_FALSE(IsTemperatureInFarenheitCritical(98.0F));  // Normal Temperature
-    ASSERT_FALSE(IsTemperatureInFarenheitCritical(Min_Normal_Temperature_F)); 
-    ASSERT_FALSE(IsTemperatureInFarenheitCritical(Max_Normal_Temperature_F)); 
+    ASSERT_FALSE(IsTemperatureInFarenheitCritical(Min_Normal_Temperature_F));
+    ASSERT_FALSE(IsTemperatureInFarenheitCritical(Max_Normal_Temperature_F));
     ASSERT_TRUE(IsPulseRateCritical(50));  // Less than Min PulseRate
     ASSERT_TRUE(IsPulseRateCritical(110));  // Greater than Max PulseRate
     ASSERT_FALSE(IsPulseRateCritical(72));  // Normal PulseRate
