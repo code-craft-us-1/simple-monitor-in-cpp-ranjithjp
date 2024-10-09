@@ -3,6 +3,8 @@
 #include <thread>
 #include <chrono>
 #include <iostream>
+#include <bitset>
+
 using std::cout, std::flush, std::this_thread::sleep_for, std::chrono::seconds;
 
 void DisplayCriticalIdicator() {
@@ -39,9 +41,18 @@ bool IsOxygenSaturationCritical(float spo2) {
     return false;
 }
 
+bool isPatientCritical(float temperature, float pulseRate, float spo2) {
+    
+    std::bitset<Vitals::count> vitalsStatus{};
+
+    vitalsStatus[Temperature] = IsTemperatureInFarenheitCritical(temperature);
+    vitalsStatus[PulseRate] = IsPulseRateCritical(pulseRate);
+    vitalsStatus[OxygenSaturation] = IsOxygenSaturationCritical(spo2);
+    return vitalsStatus.any();
+}
+
 int vitalsOk(float temperature, float pulseRate, float spo2) {
-    if (IsTemperatureInFarenheitCritical(temperature) ||
-        IsPulseRateCritical(pulseRate) || IsOxygenSaturationCritical(spo2)) {
+    if (isPatientCritical(temperature, pulseRate, spo2)) {
         DisplayCriticalIdicator();
         return 0;
     }

@@ -6,6 +6,15 @@ constexpr const float Min_Normal_PulseRange = 60.0F;
 constexpr const float Max_Normal_PulseRange = 100.0F;
 constexpr const float Min_Normal_SPO2 = 90.0F;
 
+
+enum Vitals
+{
+    Temperature, 
+    PulseRate, 
+    OxygenSaturation, 
+    count
+};
+
 bool IsTemperatureInFarenheitCritical(float temperature);
 bool IsPulseRateCritical(float pulseRate);
 bool IsOxygenSaturationCritical(float spo2);
