@@ -5,6 +5,7 @@ constexpr const float Max_Normal_Temperature_F = 102.0F;
 constexpr const float Min_Normal_PulseRange = 60.0F;
 constexpr const float Max_Normal_PulseRange = 100.0F;
 constexpr const float Min_Normal_SPO2 = 90.0F;
+constexpr const float Max_Normal_SPO2 = 100.0F;
 
 
 enum Vitals {

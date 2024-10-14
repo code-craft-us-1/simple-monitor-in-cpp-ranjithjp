@@ -5,7 +5,10 @@
 #include <iostream>
 #include <bitset>
 
-using std::cout, std::flush, std::this_thread::sleep_for, std::chrono::seconds;
+using std::cout;
+using std::flush;
+using std::this_thread::sleep_for;
+using std::chrono::seconds;
 
 void DisplayCriticalIdicator() {
     for (int i = 0; i < 6; i++) {
@@ -17,8 +20,15 @@ void DisplayCriticalIdicator() {
     cout << std::endl;
 }
 
+bool CheckValueOutOfRange(float MinValue, float MaxValue, float value) {
+    if (value < MinValue || value > MaxValue) {
+        return true;
+    }
+    return false;
+}
+
 bool IsTemperatureInFarenheitCritical(float temperature) {
-    if (temperature < Min_Normal_Temperature_F || temperature > Max_Normal_Temperature_F) {
+    if (CheckValueOutOfRange(Min_Normal_Temperature_F, Max_Normal_Temperature_F, temperature)) {
         cout << "Temperature is critical!\n";
         return true;
     }
@@ -26,16 +36,16 @@ bool IsTemperatureInFarenheitCritical(float temperature) {
 }
 
 bool IsPulseRateCritical(float pulseRate) {
-    if (pulseRate < Min_Normal_PulseRange || pulseRate > Max_Normal_PulseRange) {
-        cout << "Pulse Rate is out of range!\n";
+    if (CheckValueOutOfRange(Min_Normal_PulseRange, Max_Normal_PulseRange, pulseRate)) {
+        cout << "Pulse Rate is critical!\n";
         return true;
     }
     return false;
 }
 
 bool IsOxygenSaturationCritical(float spo2) {
-    if (spo2 < Min_Normal_SPO2) {
-        cout << "Oxygen Saturation out of range!\n";
+    if (CheckValueOutOfRange(Min_Normal_SPO2, Max_Normal_SPO2, spo2)) {
+        cout << "Oxygen Saturation is critical!\n";
         return true;
     }
     return false;
